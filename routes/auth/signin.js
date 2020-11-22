@@ -50,7 +50,10 @@ router.post(
     console.log('cookie -> ', userJwt);
     const cookie = `express:sess=${userJwt}`;
     if (config.nodeEnv === 'production') {
-      res.set('Set-Cookie', cookie);
+      //res.set('Set-Cookie', cookie);
+      res.cookie('express:sess', userJwt, {
+        sameSite: 'none',
+      });
     }
     res.status(200).send(user);
   }
