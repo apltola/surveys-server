@@ -47,6 +47,11 @@ router.post(
     );
 
     req.session.jwt = userJwt;
+    console.log('cookie -> ', userJwt);
+    const cookie = `express:sess=${userJwt}`;
+    if (config.nodeEnv === 'production') {
+      res.set('Set-Cookie', cookie);
+    }
     res.status(200).send(user);
   }
 );
