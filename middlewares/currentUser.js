@@ -1,6 +1,11 @@
 const jwt = require('jsonwebtoken');
+const config = require('../config');
 
 module.exports = function (req, res, next) {
+  if (req.headers.cookie) {
+    console.log('req.headers.cookie ===> ', req.headers.cookie);
+  }
+
   if (!req.session) {
     return next();
   }
@@ -10,7 +15,7 @@ module.exports = function (req, res, next) {
   }
 
   try {
-    const payload = jwt.verify(req.session.jwt, process.env.JWT_SECRET);
+    const payload = jwt.verify(req.session.jwt, config.jwtSecret);
 
     req.currentUser = payload;
     console.log('middleware currentuser', req.currentUser);
