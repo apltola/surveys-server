@@ -29,6 +29,7 @@ app.use(
   cookieSession({
     signed: false,
     secure: config.nodeEnv === 'production',
+    sameSite: false,
   })
 );
 
