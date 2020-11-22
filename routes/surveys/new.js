@@ -34,7 +34,6 @@ router.post('/api/surveys', requireAuth, async (req, res) => {
     await survey.save();
     res.send('email sent successfully');
   } catch (error) {
-    console.log(error);
     res.status(500).send(error);
   }
 });

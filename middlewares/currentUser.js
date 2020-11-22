@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
-  console.log('CURRENT USER MIDDLEWARE');
-  console.log('req.session ', req.session);
   if (!req.session) {
     return next();
   }
