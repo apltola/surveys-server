@@ -7,4 +7,5 @@ module.exports = {
   jwtSecret: process.env.JWT_SECRET,
   nodeEnv: process.env.NODE_ENV,
   redirectDomain: process.env.REDIRECT_DOMAIN,
+  clientOrigin: process.env.CLIENT_ORIGIN,
 };

@@ -22,13 +22,13 @@ app.use(json());
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:3000',
+    origin: config.clientOrigin,
   })
 );
 app.use(
   cookieSession({
     signed: false,
-    secure: process.env.NODE_ENV === 'production',
+    secure: config.nodeEnv === 'production',
   })
 );
 
@@ -48,6 +48,12 @@ const connectToDb = async () => {
 
 app.get('/api', (req, res) => {
   res.send('hello from api');
+});
+
+app.get('/api/test', (req, res) => {
+  res.send(
+    `nodeEnv -> ${config.nodeEnv}, clientOrigin -> ${config.clientOrigin}`
+  );
 });
 
 //app.use(currentUserMiddleware);
