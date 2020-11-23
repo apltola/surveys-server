@@ -2,10 +2,6 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 module.exports = function (req, res, next) {
-  if (req.headers.cookie) {
-    console.log('req.headers.cookie ===> ', req.headers.cookie);
-  }
-
   if (!req.session) {
     return next();
   }
