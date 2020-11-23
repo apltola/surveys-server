@@ -16,6 +16,7 @@ const { getSurveysRouter } = require('./routes/surveys');
 const { showSurveyRouter } = require('./routes/surveys/show');
 const path = require('path');
 const { signin2Router } = require('./routes/auth/signin2');
+const { signupRouter2 } = require('./routes/auth/signup2');
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.get('/api/test', (req, res) => {
 //app.use(currentUserMiddleware);
 app.use(currentUserRouter);
 app.use(signupRouter);
+app.use(signupRouter2);
 app.use(signinRouter);
 app.use(signin2Router);
 app.use(signoutRouter);
