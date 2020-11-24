@@ -1,13 +1,15 @@
 const express = require('express');
-const requireAuth = require('../../middlewares/requireAuth');
 const Survey = require('../../models/Survey');
+const requireAuth2 = require('../../middlewares/requireAuth2');
 
 const router = express.Router();
 
-router.get('/api/surveys', requireAuth, async (req, res) => {
+router.get('/api/surveys', requireAuth2, async (req, res) => {
+  console.log('uuuseri --> ', req.currentUser);
   const surveys = await Survey.find({ userId: req.currentUser.id }).select({
     recipients: false,
   });
+
   surveys.reverse();
   res.send(surveys);
 });

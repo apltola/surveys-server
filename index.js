@@ -2,8 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const { json } = require('body-parser');
 const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
+const path = require('path');
 const currentUserMiddleware = require('./middlewares/currentUser');
 const { webhookRouter } = require('./routes/surveys/webhook');
 const { signupRouter } = require('./routes/auth/signup');
@@ -14,7 +16,6 @@ const { createSurveyRouter } = require('./routes/surveys/new');
 const { feedbackRouter } = require('./routes/surveys/feedback');
 const { getSurveysRouter } = require('./routes/surveys');
 const { showSurveyRouter } = require('./routes/surveys/show');
-const path = require('path');
 const { signin2Router } = require('./routes/auth/signin2');
 const { signupRouter2 } = require('./routes/auth/signup2');
 
@@ -34,6 +35,7 @@ app.use(
     sameSite: false,
   })
 );
+app.use(cookieParser());
 
 const connectToDb = async () => {
   try {
