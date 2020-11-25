@@ -77,8 +77,7 @@ module.exports = (survey) => {
               </a>
             </button>
             <div class="small-print">
-              You received this email from{' '}
-              <a href="https://yesnosurveys.vercel.app">yesnosurveys.app</a>
+              You received this email from <a href="https://yesnosurveys.vercel.app">yesnosurveys.app</a>
             </div>
           </div>
         </div>
