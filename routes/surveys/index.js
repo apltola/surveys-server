@@ -5,13 +5,27 @@ const requireAuth2 = require('../../middlewares/requireAuth2');
 const router = express.Router();
 
 router.get('/api/surveys', requireAuth2, async (req, res) => {
-  console.log('uuuseri --> ', req.currentUser);
   const surveys = await Survey.find({ userId: req.currentUser.id }).select({
     recipients: false,
   });
 
   surveys.reverse();
   res.send(surveys);
+});
+
+// for testing purposes
+router.get('/api/surveys/:userid', async (req, res) => {
+  const surveys = await Survey.find({ userId: req.params.userid }).select({
+    recipients: false,
+  });
+  surveys.reverse();
+  res.send(surveys);
+});
+
+//for testing purposes
+router.post('/api/dummy', async (req, res) => {
+  console.log('headers from browser --> ', req.headers);
+  res.send('moi');
 });
 
 /* router.post('/api/email', (req, res) => {

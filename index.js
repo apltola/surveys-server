@@ -55,11 +55,15 @@ app.get('/api', (req, res) => {
   res.send('hello from api');
 });
 
-app.get('/api/test', (req, res) => {
+/* app.get('/api/test', (req, res) => {
   res.send(
     `nodeEnv -> ${config.nodeEnv}, clientOrigin -> ${config.clientOrigin}`
   );
 });
+
+app.get('/temp', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'temp.html'));
+}); */
 
 //app.use(currentUserMiddleware);
 app.use(currentUserRouter);

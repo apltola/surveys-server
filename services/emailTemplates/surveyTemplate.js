@@ -29,6 +29,7 @@ module.exports = (survey) => {
         .email-body {
           padding-top: 1vh;
           font-size: 20px;
+          white-space: pre;
         }
         a {
           text-decoration: none;
@@ -53,11 +54,17 @@ module.exports = (survey) => {
         .btn-text {
           margin-right: 6px;
         }
+        .small-print {
+          font-size: 12px;
+          border-top: 1px solid rgb(226, 232, 240);
+          margin-top: 30px;
+          padding-top: 8px;
+          opacity: 0.5;
+        }
       </style>
       <body>
         <div class="container">
           <div class="content">
-            <h2>${survey.title}</h2>
             <p class="email-body">${survey.body}</p>
             <button>
               <a href='${config.redirectDomain}/api/surveys/${survey.id}/yes'>
@@ -66,9 +73,13 @@ module.exports = (survey) => {
             </button>
             <button>
               <a href='${config.redirectDomain}/api/surveys/${survey.id}/no'>
-                <span class="btn-text">No</span> 👍
+                <span class="btn-text">No</span> 👎
               </a>
             </button>
+            <div class="small-print">
+              You received this email from{' '}
+              <a href="https://yesnosurveys.vercel.app">yesnosurveys.app</a>
+            </div>
           </div>
         </div>
       </body>

@@ -11,7 +11,6 @@ module.exports = async function (req, res, next) {
   try {
     const token = authorization.split(' ')[1];
     const decoded = jwt_decode(token);
-    console.log('jeejee? ', decoded);
     const user = await User.findOne({
       usernameLowerCase: decoded.name.toLowerCase(),
     });
@@ -24,6 +23,6 @@ module.exports = async function (req, res, next) {
     return next();
   } catch (error) {
     console.log(error);
-    return res.status(500).send('server error...');
+    return res.status(500).send('server error');
   }
 };
