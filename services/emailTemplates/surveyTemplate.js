@@ -68,12 +68,12 @@ module.exports = (survey) => {
             <p class="email-body">${survey.body}</p>
             <button>
               <a href='${config.redirectDomain}/api/surveys/${survey.id}/yes'>
-                <span class="btn-text">Yes</span> 👍
+                Yes 👍
               </a>
             </button>
             <button>
               <a href='${config.redirectDomain}/api/surveys/${survey.id}/no'>
-                <span class="btn-text">No</span> 👎
+                No 👎
               </a>
             </button>
             <div class="small-print">

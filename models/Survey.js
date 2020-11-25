@@ -12,6 +12,7 @@ const surveySchema = new mongoose.Schema(
     dateSent: Date,
     lastResponded: Date,
     recipients: [recipientSchema],
+    recipientsAmount: { type: Number, default: 0 },
   },
   {
     toJSON: {

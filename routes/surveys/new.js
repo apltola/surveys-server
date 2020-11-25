@@ -12,11 +12,16 @@ const router = express.Router();
 router.post('/api/surveys', requireAuth2, async (req, res) => {
   const { title, subject, body, recipients } = req.body;
 
+  const formattedRecipients = recipients
+    .split(',')
+    .map((email) => ({ email: email.trim() }));
+
   const survey = new Survey({
     title,
     body,
     subject,
-    recipients: recipients.split(',').map((email) => ({ email: email.trim() })),
+    recipients: formattedRecipients,
+    recipientsAmount: formattedRecipients.length,
     userId: req.currentUser.id,
     dateSent: Date.now(),
   });
