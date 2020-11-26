@@ -18,6 +18,7 @@ const { getSurveysRouter } = require('./routes/surveys');
 const { showSurveyRouter } = require('./routes/surveys/show');
 const { signin2Router } = require('./routes/auth/signin2');
 const { signupRouter2 } = require('./routes/auth/signup2');
+const { deleteSurveyRouter } = require('./routes/surveys/delete');
 
 const app = express();
 
@@ -76,6 +77,7 @@ app.use(signoutRouter);
 app.use(getSurveysRouter);
 app.use(createSurveyRouter);
 app.use(showSurveyRouter);
+app.use(deleteSurveyRouter);
 app.use(webhookRouter);
 app.use(feedbackRouter);
 

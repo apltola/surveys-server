@@ -3,7 +3,6 @@ const User = require('../models/User');
 
 module.exports = async function (req, res, next) {
   const { authorization } = req.headers;
-  console.log('auth header ', authorization);
   if (!authorization || !authorization.includes('Bearer')) {
     return res.status(401).send('unauthorized');
   }
