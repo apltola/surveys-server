@@ -1,6 +1,6 @@
 const express = require('express');
 const Survey = require('../../models/Survey');
-const requireAuth = require('../../middlewares/requireAuth2');
+const requireAuth = require('../../middlewares/requireAuth');
 
 const router = express.Router();
 

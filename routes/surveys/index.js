@@ -1,10 +1,10 @@
 const express = require('express');
 const Survey = require('../../models/Survey');
-const requireAuth2 = require('../../middlewares/requireAuth2');
+const requireAuth = require('../../middlewares/requireAuth');
 
 const router = express.Router();
 
-router.get('/api/surveys', requireAuth2, async (req, res) => {
+router.get('/api/surveys', requireAuth, async (req, res) => {
   const surveys = await Survey.find({ userId: req.currentUser.id }).select({
     recipients: false,
   });
@@ -21,38 +21,6 @@ router.get('/api/surveys/:userid', async (req, res) => {
   surveys.reverse();
   res.send(surveys);
 });
-
-//for testing purposes
-router.post('/api/dummy', async (req, res) => {
-  console.log('headers from browser --> ', req.headers);
-  res.send('moi');
-});
-
-/* router.post('/api/email', (req, res) => {
-  const msg = {
-    to: 'aleksijaakkojuhani@gmail.com', // Change to your recipient
-    from: 'no.reply@lippujahetimulle.com', // Change to your verified sender
-    subject: 'SendGrid test',
-    text: 'with Node.js',
-    html: `<div>
-        <p>
-          hello hello this is a test
-        </p>
-        <div>
-          <a href="http://localhost:3222">jees</a>
-        </div>
-      </div>`,
-  };
-
-  sgMail
-    .send(msg)
-    .then(() => {
-      res.send('email sent successfully');
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-}); */
 
 module.exports = {
   getSurveysRouter: router,

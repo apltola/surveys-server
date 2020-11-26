@@ -2,14 +2,13 @@ const express = require('express');
 const Survey = require('../../models/Survey');
 const surveyTemplate = require('../../services/emailTemplates/surveyTemplate');
 const requireAuth = require('../../middlewares/requireAuth');
-const requireAuth2 = require('../../middlewares/requireAuth2');
 const sgMail = require('@sendgrid/mail');
 const { sendgridKey } = require('../../config');
 sgMail.setApiKey(sendgridKey);
 
 const router = express.Router();
 
-router.post('/api/surveys', requireAuth2, async (req, res) => {
+router.post('/api/surveys', requireAuth, async (req, res) => {
   const { title, subject, body, recipients } = req.body;
 
   const formattedRecipients = recipients
