@@ -67,18 +67,21 @@ module.exports = (survey) => {
           <div class="content">
             <p class="email-body">${survey.body}</p>
             <button>
-              <a href='${config.redirectDomain}/api/surveys/${survey.id}/yes'>
+              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback'>
                 Yes
               </a>
             </button>
             <button>
-              <a href='${config.redirectDomain}/api/surveys/${survey.id}/no'>
+              <a href='${config.clientOrigin}/api/surveys/${survey.id}/feedback'>
                 No
               </a>
             </button>
             <p class="small-print">
-              You received this email from <a href="https://yesnosurveys.vercel.app">yesnosurveys.app. You cannot respond to this email.</a>
+              You received this email from <a href="https://yesnosurveys.vercel.app">yesnosurveys.vercel.app</a>
             </p>
+            <div class="small-print">
+              You cannot respond to this email.
+            </div>
           </div>
         </div>
       </body>
