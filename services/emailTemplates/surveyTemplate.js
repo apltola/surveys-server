@@ -61,6 +61,11 @@ module.exports = (survey) => {
           padding-top: 8px;
           opacity: 0.5;
         }
+        .small-print-bottom {
+          font-size: 12px;
+          padding-top: 8px;
+          opacity: 0.5;
+        }
       </style>
       <body>
         <div class="container">
@@ -72,7 +77,7 @@ module.exports = (survey) => {
               </a>
             </button>
             <button>
-              <a href='${config.clientOrigin}/api/surveys/${survey.id}/feedback'>
+              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback'>
                 No
               </a>
             </button>
