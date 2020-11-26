@@ -63,7 +63,6 @@ module.exports = (survey) => {
         }
         .small-print-bottom {
           font-size: 12px;
-          padding-top: 4px;
           opacity: 0.5;
         }
       </style>
