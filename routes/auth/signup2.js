@@ -27,9 +27,7 @@ router.post(
       usernameLowerCase: username.toLowerCase(),
     });
     if (existingUser) {
-      return res
-        .status(400)
-        .send({ errors: [{ msg: 'Username already in use!' }] });
+      return res.status(400).send('username-reserved');
     }
 
     const user = new User({

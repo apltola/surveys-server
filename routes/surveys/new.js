@@ -29,7 +29,7 @@ router.post('/api/surveys', requireAuth2, async (req, res) => {
   const template = surveyTemplate(survey);
   const msg = {
     to: survey.recipients,
-    from: 'no-reply@lippujahetimulle.com', // Change to your verified sender
+    from: `${req.currentUser.username}@lippujahetimulle.com`, // Change to your verified sender
     subject: survey.subject,
     text: 'yes hello this is text',
     html: template,

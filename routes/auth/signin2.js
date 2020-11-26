@@ -10,16 +10,12 @@ router.post('/api/auth/signin2', async (req, res) => {
     usernameLowerCase: username.toLowerCase(),
   });
   if (!user) {
-    return res
-      .status(400)
-      .send({ errors: [{ msg: 'incorrect username or password' }] });
+    return res.status(400).send('incorrect-credentials');
   }
 
   const passwordsMatch = await user.comparePassword(password, user.password);
   if (!passwordsMatch) {
-    return res
-      .status(400)
-      .send({ errors: [{ msg: 'incorrect username or password' }] });
+    return res.status(400).send('incorrect-credentials');
   }
 
   res.status(200).send(user);
