@@ -63,7 +63,7 @@ module.exports = (survey) => {
         }
         .small-print-bottom {
           font-size: 12px;
-          padding-top: 8px;
+          padding-top: 4px;
           opacity: 0.5;
         }
       </style>
@@ -85,7 +85,7 @@ module.exports = (survey) => {
               You received this email from <a href="https://yesnosurveys.vercel.app">yesnosurveys.vercel.app</a>
             </p>
             <div class="small-print-bottom">
-              You cannot respond to this email.
+              You cannot respond to this email
             </div>
           </div>
         </div>
