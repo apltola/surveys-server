@@ -28,7 +28,11 @@ router.post('/api/surveys', requireAuth, async (req, res) => {
   const template = surveyTemplate(survey);
   const msg = {
     to: survey.recipients,
-    from: `${req.currentUser.username}@lippujahetimulle.com`, // Change to your verified sender
+    //from: `${req.currentUser.username}@lippujahetimulle.com`, // verified sender on sendgrid
+    from: {
+      email: 'no-reply@lippujahetimulle.com',
+      name: 'Yes|No Surveys',
+    },
     subject: survey.subject,
     text: 'yes hello this is text',
     html: template,

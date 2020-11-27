@@ -10,7 +10,8 @@ const router = express.Router();
 
 router.post('/api/surveys/webhook', async (req, res) => {
   console.log(`WEBHOOK PINGED`);
-  const path = new Path('/api/surveys/:surveyId/:choice');
+  //const path = new Path('/api/surveys/:surveyId/:choice');
+  const path = new Path('/surveys/:surveyId/feedback');
 
   const events = req.body.map((event) => {
     const match = path.test(new URL(event.url).pathname);

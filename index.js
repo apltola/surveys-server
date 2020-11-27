@@ -1,11 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const { json } = require('body-parser');
-const cookieSession = require('cookie-session');
-const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
-const path = require('path');
 const { webhookRouter } = require('./routes/surveys/webhook');
 const { signoutRouter } = require('./routes/auth/signout');
 const { createSurveyRouter } = require('./routes/surveys/new');
@@ -24,14 +21,6 @@ app.use(
     origin: config.clientOrigin,
   })
 );
-app.use(
-  cookieSession({
-    signed: false,
-    secure: config.nodeEnv === 'production',
-    sameSite: false,
-  })
-);
-app.use(cookieParser());
 
 const connectToDb = async () => {
   try {
