@@ -14,12 +14,14 @@ router.post('/api/surveys/webhook', async (req, res) => {
   const path = new Path('/surveys/:surveyId/feedback');
 
   const events = req.body.map((event) => {
-    const match = path.test(new URL(event.url).pathname);
+    console.log('event.url -> ', event.url);
+    const url = new URL(event.url);
+    const match = path.test(url.pathname);
     if (match) {
       return {
         email: event.email,
         surveyId: match.surveyId,
-        choice: match.choice,
+        choice: url.searchParams.get('choice'),
       };
     }
   });

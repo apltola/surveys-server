@@ -71,12 +71,12 @@ module.exports = (survey) => {
           <div class="content">
             <p class="email-body">${survey.body}</p>
             <button>
-              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback'>
+              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback?choice=yes'>
                 Yes
               </a>
             </button>
             <button>
-              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback'>
+              <a href='${config.clientOrigin}/surveys/${survey.id}/feedback?choice=no'>
                 No
               </a>
             </button>
