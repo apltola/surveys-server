@@ -4,7 +4,7 @@ const User = require('../../models/User');
 const surveyTemplate = require('../../services/emailTemplates/surveyTemplate');
 const requireAuth = require('../../middlewares/requireAuth');
 const sgMail = require('@sendgrid/mail');
-const { sendgridKey } = require('../../config');
+const { sendgridKey, sendgridSender } = require('../../config');
 sgMail.setApiKey(sendgridKey);
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.post('/api/surveys', requireAuth, async (req, res) => {
   const msg = {
     to: survey.recipients,
     from: {
-      email: 'no-reply@lippujahetimulle.com', // verfied sender on sendgrid
+      email: sendgridSender, // verified sender on sendgrid
       name: 'Yes|No Surveys',
     },
     subject: survey.subject,

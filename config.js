@@ -8,4 +8,5 @@ module.exports = {
   nodeEnv: process.env.NODE_ENV,
   redirectDomain: process.env.REDIRECT_DOMAIN,
   clientOrigin: process.env.CLIENT_ORIGIN,
+  sendgridSender: process.env.SENDGRID_SENDER,
 };
