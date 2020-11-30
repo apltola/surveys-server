@@ -3,6 +3,10 @@ const User = require('../../models/User');
 
 const router = express.Router();
 
+/* 
+  the only purpose is to check if provided user exists in database and password is correct.
+  session with jwt token is created in another server.
+*/
 router.post('/api/auth/signin', async (req, res) => {
   const { username, password } = req.body;
 

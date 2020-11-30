@@ -7,6 +7,10 @@ const validateRequest = require('../../middlewares/validateRequest');
 
 const router = express.Router();
 
+/* 
+  only purpose is to create a new user user in database.
+  session with jwt token is created in another server.
+*/
 router.post(
   '/api/auth/signup',
   [

@@ -9,6 +9,9 @@ const uniqWith = require('lodash.uniqwith');
 
 const router = express.Router();
 
+/* 
+  handle sendgrid webhooks on email clicked events.
+*/
 router.post('/api/surveys/webhook', async (req, res) => {
   console.log(`WEBHOOK PINGED`);
   //const path = new Path('/api/surveys/:surveyId/:choice');

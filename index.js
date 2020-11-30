@@ -4,7 +4,6 @@ const { json } = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
 const { webhookRouter } = require('./routes/surveys/webhook');
-const { signoutRouter } = require('./routes/auth/signout');
 const { createSurveyRouter } = require('./routes/surveys/new');
 const { getSurveysRouter } = require('./routes/surveys');
 const { showSurveyRouter } = require('./routes/surveys/show');
@@ -40,7 +39,6 @@ const connectToDb = async () => {
 
 app.use(signupRouter);
 app.use(signinRouter);
-app.use(signoutRouter);
 app.use(showUserRouter);
 
 app.use(getSurveysRouter);
