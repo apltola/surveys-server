@@ -1,5 +1,6 @@
 const express = require('express');
 const Survey = require('../../models/Survey');
+const User = require('../../models/User');
 const { Path } = require('path-parser');
 const { URL } = require('url');
 const compact = require('lodash.compact');
@@ -30,19 +31,33 @@ router.post('/api/surveys/webhook', async (req, res) => {
   const uniqueEvents = uniqWith(definedEvents, isEqual);
 
   uniqueEvents.forEach(({ email, surveyId, choice }) => {
-    Survey.updateOne(
-      {
-        _id: surveyId,
-        recipients: {
-          $elemMatch: { email, responded: false },
+    const updateDocuments = async () => {
+      const survey = await Survey.findOneAndUpdate(
+        {
+          _id: surveyId,
+          recipients: {
+            $elemMatch: { email, responded: false },
+          },
         },
-      },
-      {
-        $inc: { [choice]: 1 },
-        $set: { 'recipients.$.responded': true },
-        lastResponded: new Date(),
+        {
+          $inc: { [choice]: 1 },
+          $set: { 'recipients.$.responded': true },
+          lastResponded: new Date(),
+        }
+      );
+
+      if (survey) {
+        console.log('updated survey -> ', survey._id);
+        await User.findByIdAndUpdate(
+          { _id: survey.userId },
+          {
+            $inc: { responsesReceived: 1 },
+          }
+        );
       }
-    ).exec();
+    };
+
+    updateDocuments();
   });
 
   res.send({});

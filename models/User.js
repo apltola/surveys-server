@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true },
     usernameLowerCase: { type: String, required: true },
     password: { type: String, required: true },
+    surveysCreated: { type: Number, default: 0 },
+    emailsSent: { type: Number, default: 0 },
+    responsesReceived: { type: Number, default: 0 },
   },
   {
     toJSON: {

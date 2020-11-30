@@ -1,5 +1,6 @@
 const express = require('express');
 const Survey = require('../../models/Survey');
+const User = require('../../models/User');
 const surveyTemplate = require('../../services/emailTemplates/surveyTemplate');
 const requireAuth = require('../../middlewares/requireAuth');
 const sgMail = require('@sendgrid/mail');
@@ -41,6 +42,15 @@ router.post('/api/surveys', requireAuth, async (req, res) => {
   try {
     await sgMail.sendMultiple(msg);
     await survey.save();
+    await User.updateOne(
+      { _id: req.currentUser.id },
+      {
+        $inc: {
+          surveysCreated: 1,
+          emailsSent: formattedRecipients.length,
+        },
+      }
+    );
     res.send('email sent successfully');
   } catch (error) {
     res.status(500).send(error);

@@ -11,6 +11,7 @@ const { showSurveyRouter } = require('./routes/surveys/show');
 const { signinRouter } = require('./routes/auth/signin');
 const { signupRouter } = require('./routes/auth/signup');
 const { deleteSurveyRouter } = require('./routes/surveys/delete');
+const { showUserRouter } = require('./routes/user/show');
 
 const app = express();
 
@@ -28,6 +29,7 @@ const connectToDb = async () => {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
     console.log('🥭 Connected to MONGO');
   } catch (error) {
@@ -39,6 +41,7 @@ const connectToDb = async () => {
 app.use(signupRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
+app.use(showUserRouter);
 
 app.use(getSurveysRouter);
 app.use(createSurveyRouter);
